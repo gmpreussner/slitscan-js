@@ -1,0 +1,75 @@
+body {
+  background-color: gray;
+}
+
+canvas, video {
+  background-color: white;
+}
+
+#container {
+  margin: 2em 4em;
+  width: 75%;
+}
+
+#container input {
+  vertical-align: middle;
+}
+
+/* 8<---- */
+#canvas {
+  background-color: #f7f7f7;
+  cursor: pointer;
+  height: 128px;
+  margin-top: 0.5em;
+  position: relative;
+  width: 100%;
+}
+
+#gizmo {
+  border: 1px solid white;
+  color: white;
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+}
+
+#options {
+  margin: 0.5em 0 0.5em 0;
+}
+
+#options fieldset {
+  background-color: #f7f7f7;
+  border: none;
+  margin-top: 1em;
+  padding: 1em;
+}
+
+#options fieldset legend {
+  background-color: #f7f7f7;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+}
+
+#options div {
+  margin-top: 0.5em;
+}
+
+#options input[type="range"] {
+  width: 75%;
+}
+
+#slider {
+  position: relative;
+  width: 100%;
+}
+
+#video {
+  width: 100%;
+}
+
+#video-overlay {
+  margin-top: 0.5em;
+  position: relative;
+}

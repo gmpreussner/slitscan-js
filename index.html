@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>Slit-Scan Tool</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- We only need these for browser compatibility -->
+  <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="html5slider.js"></script>
+  <script type="text/javascript" src="pointer_events_polyfill.js"></script>
+  <!-- This is the actual script for the slit-scan tool -->
+  <script type="text/javascript" src="slitscan.js"></script>
+</head>
+
+<body>
+  <div id="container">
+  <!-- 8< -->
+
+<input id="filepicker" type="file" accept="video/*" />
+
+<!-- Video player & slit slider -->
+<div id="video-overlay">
+  <video id="video" controls>
+    <source src="simpsons.mp4" type="video/mp4">
+    <!--<source src="{video}" type="video/mp4">-->
+    <strong>Your browser does not support HTML5 videos.</strong>
+  </video>
+
+  <div id="gizmo"></div>
+</div>
+
+<input id="slider" type="range" min="0" max="1" step="0.001" value="0.5" />
+
+<!-- Output canvas -->
+<canvas id="canvas" width="1024" height="256"></canvas>
+
+<!-- Options panel -->
+<div id="options">
+  <fieldset>
+    <legend>Input Options:</legend>
+    <div>Slit Width (pixels):<br /><input id="slit" type="range" min="1" max="320" step="1" value="1" /> <span id="slitLabel">1</span></div>
+    <div><input type="checkbox" id="slide" name="slide" value="slide" /> Slide slit position over time</div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Output Options:</legend>
+    <div>Slit Stretch (pixel):<br /><input id="stretch" type="range" min="1" max="2048" step="1" value="1" /> <span id="stretchLabel">1</span></div>
+    <div>
+      Image Width (pixels):<br /><input id="outwidth" pattern="[0-9]{5}" type="number" min="1" max="32768" value="2048" />
+      <button id="calculate" title="Frame rate times the length of the video">&larr; Calculate from Frame Rate</button>
+      <input id="fps" type="number" max="120" pattern="[0-9]{3}" value="29" /> FPS
+    </div>
+    <div>
+      Image Height (pixels):<br /><input id="outheight" type="number" min="1" max="4096" value="256" disabled />
+      <input id="autoheight" type="checkbox" name="autoheight" pattern="[0-9]{4}" value="autoheight" checked /> Use video height
+    </div>
+  </fieldset>
+</div>
+
+  <!-- >8 -->
+  </div>
+</body>
+</html>
