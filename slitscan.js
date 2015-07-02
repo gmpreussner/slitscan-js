@@ -83,18 +83,22 @@ window.onload = function() {
 
   slide.onchange = function(e) {
     // set initial slider value
-    if (video.ended) {
+    if (video.ended || (video.currentTime == 0)) {
       if (slide.checked) {
         slider.value = 0;
       } else {
         slider.value = 0.5;
       }
+      updateGizmo();
     }
   };
 
+  slider.onmousedown = function(e) {
+    slide.checked = false;
+  }
+
   slider.onmousemove = function(e) {
     // override slit position
-    slide.checked = false;
     pos = slider.value;
     updateGizmo();
   };
@@ -186,8 +190,11 @@ window.onload = function() {
 
   function updateGizmo() {
     // update slit gizmo position
-    var gizmoWidth = Math.max(1, slit.value * (video.offsetWidth / video.videoWidth));
-    gizmo.style.left = ((video.offsetWidth - gizmoWidth) * pos) + 'px';
+    var gizmoWidth = 1;
+    if (video.videoWidth > 0) {
+      gizmoWidth =  Math.max(1, slit.value * (video.offsetWidth / video.videoWidth));
+    }
+    gizmo.style.left = ((video.offsetWidth - gizmoWidth) * slider.value) + 'px';
     gizmo.style.height = video.offsetHeight + 'px';
     gizmo.style.width = gizmoWidth + 'px';
   }
